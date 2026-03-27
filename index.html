@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FalaJa English</title>
+  <meta name="description" content="Treino simples de ingles com foco em ouvir e falar.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#eefbf8",
+              100: "#d2f5ee",
+              500: "#19a07f",
+              600: "#12866b",
+              700: "#0f6a56",
+              900: "#0b2f29"
+            },
+            ink: "#122117",
+            warm: "#fffaf2",
+            accent: "#ffb84d"
+          },
+          boxShadow: {
+            soft: "0 18px 50px rgba(18, 33, 23, 0.10)"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-warm via-white to-brand-50 text-ink">
+  <main class="mx-auto flex min-h-screen max-w-4xl items-center px-4 py-8 sm:px-6">
+    <section class="w-full rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-black/5 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">Ouvir e falar</p>
+          <h1 class="mt-2 text-3xl font-black sm:text-4xl">FalaJa English</h1>
+          <p class="mt-3 max-w-xl text-slate-600">Escute a frase em ingles, repita em voz alta e avance para a proxima.</p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <button id="phraseModeButton" class="rounded-2xl bg-brand-600 px-4 py-2 font-semibold text-white transition hover:bg-brand-700">Frases</button>
+            <button id="qaModeButton" class="rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100">Perguntas</button>
+            <button id="itModeButton" class="rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100">TI</button>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-right">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Frase</p>
+          <p id="phraseCounter" class="mt-1 text-lg font-bold text-brand-700">1 / 8</p>
+        </div>
+      </div>
+
+        <div class="mt-8 rounded-[2rem] bg-slate-50 p-6">
+          <div class="flex items-center justify-between gap-4">
+            <button id="prevLessonButton" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100">
+              <span aria-hidden="true">&larr;</span>
+              Voltar
+            </button>
+            <div class="text-center">
+              <p id="lessonLevel" class="text-sm font-semibold text-brand-700">Basico</p>
+              <h2 id="lessonTitle" class="mt-1 text-2xl font-bold">Cafeteria</h2>
+              <p id="activityTypeLabel" class="mt-1 text-sm text-slate-500">Frase para repetir</p>
+            </div>
+            <button id="nextLessonButton" class="inline-flex items-center gap-2 rounded-2xl bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700">
+              Proxima
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+
+        <div class="mt-6 rounded-[1.5rem] bg-white p-5">
+          <p id="promptLabel" class="text-sm font-semibold text-slate-500">Frase em ingles</p>
+          <p id="lessonPhrase" class="mt-3 text-3xl font-black leading-tight text-ink">I'd like a medium coffee, please.</p>
+          <p class="mt-5 text-sm font-semibold text-slate-500">Traducao</p>
+          <p id="lessonTranslation" class="mt-2 text-lg text-slate-700">Eu gostaria de um cafe medio, por favor.</p>
+          <div id="expectedAnswerCard" class="mt-5 hidden rounded-2xl bg-slate-50 p-4">
+            <p class="text-sm font-semibold text-slate-500">Resposta esperada</p>
+            <p id="expectedAnswer" class="mt-2 text-lg font-semibold text-slate-800"></p>
+            <p id="expectedAnswerTranslation" class="mt-2 text-sm text-slate-600"></p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <button id="listenButton" class="rounded-2xl bg-brand-600 px-5 py-4 text-lg font-semibold text-white transition hover:bg-brand-700">Ouvir</button>
+          <button id="slowListenButton" class="rounded-2xl border border-brand-200 px-5 py-4 text-lg font-semibold text-brand-700 transition hover:bg-brand-50">Ouvir devagar</button>
+          <button id="recordButton" class="rounded-2xl bg-ink px-5 py-4 text-lg font-semibold text-white transition hover:opacity-90">Falar agora</button>
+          <button id="stopButton" class="rounded-2xl border border-slate-300 px-5 py-4 text-lg font-semibold text-slate-700 transition hover:bg-slate-100">Parar</button>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <section class="rounded-[1.5rem] bg-slate-50 p-5">
+          <p class="text-sm font-semibold text-slate-500">Sua fala</p>
+          <p id="speechTranscript" class="mt-3 min-h-[72px] text-lg text-slate-800">Nenhuma fala capturada ainda.</p>
+        </section>
+
+        <section class="rounded-[1.5rem] bg-slate-50 p-5">
+          <p class="text-sm font-semibold text-slate-500">Correcao</p>
+          <div id="speechFeedback" class="mt-3 space-y-3 text-slate-700">
+            <p>Toque em "Falar agora" para comparar sua fala com a frase.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="mt-6">
+        <section class="rounded-[1.5rem] bg-brand-900 p-5 text-white">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-100">Progresso</p>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl bg-white/10 p-4">
+              <p class="text-sm text-white/75">XP</p>
+              <p id="xpValue" class="mt-2 text-2xl font-black">0</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-4">
+              <p class="text-sm text-white/75">Concluidas</p>
+              <p id="completedLessonsValue" class="mt-2 text-2xl font-black">0</p>
+            </div>
+          </div>
+          <button id="resetProgressButton" class="mt-4 rounded-2xl bg-white px-4 py-3 font-semibold text-brand-900 transition hover:bg-brand-50">Resetar progresso</button>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./lessons.js"></script>
+  <script src="./qa-activities.js"></script>
+  <script src="./it-activities.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
