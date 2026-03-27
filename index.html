@@ -33,32 +33,32 @@
   </script>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-warm via-white to-brand-50 text-ink transition-colors dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
-  <main class="mx-auto flex min-h-screen max-w-4xl items-center px-4 py-8 sm:px-6">
-    <section class="w-full rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-black/5 transition-colors dark:bg-slate-900 dark:ring-white/10 sm:p-8">
-      <div class="flex items-start justify-between gap-4">
+  <main class="mx-auto flex min-h-screen max-w-4xl items-start px-3 py-4 sm:px-6 sm:py-8">
+    <section class="w-full rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-black/5 transition-colors dark:bg-slate-900 dark:ring-white/10 sm:p-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">Ouvir e falar</p>
-          <h1 class="mt-2 text-3xl font-black sm:text-4xl">FalaJa English</h1>
+          <h1 class="mt-2 text-2xl font-black sm:text-4xl">FalaJa English</h1>
           <p class="mt-3 max-w-xl text-slate-600 dark:text-slate-300">Escute a frase em ingles, repita em voz alta e avance para a proxima.</p>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <button id="phraseModeButton" class="rounded-2xl bg-brand-600 px-4 py-2 font-semibold text-white transition hover:bg-brand-700">Frases</button>
-            <button id="qaModeButton" class="rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100">Perguntas</button>
-            <button id="itModeButton" class="rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100">TI</button>
+          <div class="mt-4 grid grid-cols-1 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+            <button id="phraseModeButton" class="rounded-2xl bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700">Frases</button>
+            <button id="qaModeButton" class="rounded-2xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100">Perguntas</button>
+            <button id="itModeButton" class="rounded-2xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100">TI</button>
           </div>
         </div>
-        <div class="flex flex-col items-end gap-3">
+        <div class="flex flex-row items-center justify-between gap-3 sm:flex-col sm:items-end">
           <button id="themeToggleButton" class="rounded-full border border-slate-300 bg-white/80 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
             Tema
           </button>
           <div class="rounded-2xl bg-slate-50 px-4 py-3 text-right transition-colors dark:bg-slate-800">
           <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Frase</p>
-          <p id="phraseCounter" class="mt-1 text-lg font-bold text-brand-700">1 / 8</p>
+          <p id="phraseCounter" class="mt-1 text-base font-bold text-brand-700 sm:text-lg">1 / 8</p>
           </div>
         </div>
       </div>
 
-        <div class="mt-8 rounded-[2rem] bg-slate-50 p-6 transition-colors dark:bg-slate-800">
-          <div class="flex items-center justify-between gap-4">
+        <div class="mt-6 rounded-[2rem] bg-slate-50 p-4 transition-colors dark:bg-slate-800 sm:mt-8 sm:p-6">
+          <div class="grid gap-3 sm:flex sm:items-center sm:justify-between sm:gap-4">
             <button id="prevLessonButton" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-700">
               <span aria-hidden="true">&larr;</span>
               Voltar
@@ -74,14 +74,14 @@
             </button>
           </div>
 
-        <div class="mt-6 rounded-[1.5rem] bg-white p-5 transition-colors dark:bg-slate-900">
+        <div class="mt-6 rounded-[1.5rem] bg-white p-4 transition-colors dark:bg-slate-900 sm:p-5">
           <p id="promptLabel" class="text-sm font-semibold text-slate-500 dark:text-slate-400">Frase em ingles</p>
-          <p id="lessonPhrase" class="mt-3 text-3xl font-black leading-tight text-ink dark:text-slate-100">I'd like a medium coffee, please.</p>
+          <p id="lessonPhrase" class="mt-3 text-2xl font-black leading-tight text-ink dark:text-slate-100 sm:text-3xl">I'd like a medium coffee, please.</p>
           <p class="mt-5 text-sm font-semibold text-slate-500 dark:text-slate-400">Traducao</p>
-          <p id="lessonTranslation" class="mt-2 text-lg text-slate-700 dark:text-slate-300">Eu gostaria de um cafe medio, por favor.</p>
+          <p id="lessonTranslation" class="mt-2 text-base text-slate-700 dark:text-slate-300 sm:text-lg">Eu gostaria de um cafe medio, por favor.</p>
           <div id="expectedAnswerCard" class="mt-5 hidden rounded-2xl bg-slate-50 p-4 transition-colors dark:bg-slate-800">
             <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Resposta esperada</p>
-            <p id="expectedAnswer" class="mt-2 text-lg font-semibold text-slate-800 dark:text-slate-100"></p>
+            <p id="expectedAnswer" class="mt-2 text-base font-semibold text-slate-800 dark:text-slate-100 sm:text-lg"></p>
             <p id="expectedAnswerTranslation" class="mt-2 text-sm text-slate-600 dark:text-slate-300"></p>
           </div>
         </div>
