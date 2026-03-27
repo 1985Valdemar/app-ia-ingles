@@ -119,11 +119,11 @@ const UiLayer = {
     const isQa = mode === "qa";
     const isIt = mode === "it";
     this.elements.phraseModeButton.className = isPhrase
-      ? "rounded-2xl bg-brand-600 px-4 py-2 font-semibold text-white transition hover:bg-brand-700"
-      : "rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100";
+      ? "rounded-2xl bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700"
+      : "rounded-2xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100";
     this.elements.qaModeButton.className = isQa
-      ? "rounded-2xl bg-brand-600 px-4 py-2 font-semibold text-white transition hover:bg-brand-700"
-      : "rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100";
+      ? "rounded-2xl bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700"
+      : "rounded-2xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100";
     this.elements.itModeButton.className = isIt
       ? "rounded-2xl bg-brand-600 px-4 py-2 font-semibold text-white transition hover:bg-brand-700"
       : "rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100";
