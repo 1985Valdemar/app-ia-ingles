@@ -1,4 +1,5 @@
 const STORAGE_KEY = "falaja-progress-v3";
+const THEME_STORAGE_KEY = "falaja-theme";
 
 // Camada de dados estaticos com as frases e licoes do app.
 const AppData = {
@@ -67,6 +68,7 @@ const UiLayer = {
     phraseModeButton: document.getElementById("phraseModeButton"),
     qaModeButton: document.getElementById("qaModeButton"),
     itModeButton: document.getElementById("itModeButton"),
+    themeToggleButton: document.getElementById("themeToggleButton"),
     xpValue: document.getElementById("xpValue"),
     completedLessonsValue: document.getElementById("completedLessonsValue")
   },
@@ -125,6 +127,11 @@ const UiLayer = {
     this.elements.itModeButton.className = isIt
       ? "rounded-2xl bg-brand-600 px-4 py-2 font-semibold text-white transition hover:bg-brand-700"
       : "rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100";
+  },
+
+  renderTheme(theme) {
+    document.body.classList.toggle("dark", theme === "dark");
+    this.elements.themeToggleButton.textContent = theme === "dark" ? "Claro" : "Escuro";
   }
 };
 
@@ -311,6 +318,12 @@ const AppController = {
     this.syncState();
   },
 
+  toggleTheme() {
+    state.theme = state.theme === "dark" ? "light" : "dark";
+    localStorage.setItem(THEME_STORAGE_KEY, state.theme);
+    UiLayer.renderTheme(state.theme);
+  },
+
   bindEvents() {
     document.getElementById("prevLessonButton").addEventListener("click", () => {
       this.prevLesson();
@@ -326,6 +339,10 @@ const AppController = {
 
     document.getElementById("itModeButton").addEventListener("click", () => {
       this.setMode("it");
+    });
+
+    document.getElementById("themeToggleButton").addEventListener("click", () => {
+      this.toggleTheme();
     });
 
     document.getElementById("listenButton").addEventListener("click", () => {
@@ -362,6 +379,8 @@ const AppController = {
       return;
     }
 
+    state.theme = localStorage.getItem(THEME_STORAGE_KEY) || "light";
+    UiLayer.renderTheme(state.theme);
     this.render();
     this.bindEvents();
     this.syncState();
